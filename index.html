@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Personal Portfolio Website with Theme Toggle and Form Validation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    .navbar, .card, .modal-content {
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode .navbar,
+    .dark-mode .card,
+    .dark-mode .modal-content {
+      background-color: #1f1f1f;
+      color: #fff;
+    }
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .hero {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+      <a class="navbar-brand" href="#home">Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><button onclick="toggleTheme()" class="btn btn-outline-dark ms-2">Toggle Theme</button></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero py-5 text-center">
+      <h1>Welcome to My Portfolio</h1>
+      <p class="lead">Frontend Developer </p>
+    </section>
+
+    <section id="about" class="py-5 container">
+      <h2>About Me</h2>
+      <p>I am a passionate frontend developer with experience in building responsive and interactive web applications.</p>
+    </section>
+
+    <section id="projects" class="py-5 container">
+    <h2>Projects</h2>
+    <div class="row">
+    <div class="col-md-4">
+    <div class="card">
+    <div class="card-body">
+    <h5 class="card-title">Project 1</h5>
+    <p class="card-text">Short description of project 1.</p>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project1Modal">More Info</button>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="card">
+    <div class="card-body">
+    <h5 class="card-title">Project 2</h5>
+    <p class="card-text">Short description of project 2.</p>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project2Modal">More Info</button>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Project 3</h5>
+              <p class="card-text">Short description of project 3.</p>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project3Modal">More Info</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-5 container">
+      <h2>Contact Me</h2>
+      <form id="contactForm" novalidate>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" required />
+          <div class="invalid-feedback">Name is required.</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" required />
+          <div class="invalid-feedback">Enter a valid email.</div>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" rows="4" required></textarea>
+          <div class="invalid-feedback">Message is required.</div>
+        </div>
+        <button type="submit" class="btn btn-success">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="text-center py-4 bg-light mt-5">
+    &copy; 2025 My Portfolio. All rights reserved.
+  </footer>
+
+  <!-- Project Modals -->
+  <div class="modal fade" id="project1Modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Project 1</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Detailed information about Project 1.</div></div></div></div>
+  <div class="modal fade" id="project2Modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Project 2</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Detailed information about Project 2.</div></div></div></div>
+  <div class="modal fade" id="project3Modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Project 3</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Detailed information about Project 3.</div></div></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a.nav-link').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Form validation
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      const form = e.target;
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        form.classList.add('was-validated');
+      }
+    });
+  </script>
+</body>
+</html>
