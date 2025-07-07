@@ -1,40 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsive Personal Portfolio Website with Theme Toggle and Form Validation</title>
+  <title>Responsive Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
     body {
       transition: background-color 0.3s, color 0.3s;
     }
+
     body.dark-mode {
       background-color: #121212;
       color: #ffffff;
     }
-    .navbar, .card, .modal-content {
+
+    .navbar,
+    .card,
+    .modal-content {
       transition: background-color 0.3s, color 0.3s;
     }
-    .dark-mode .navbar,
-    .dark-mode .card,
-    .dark-mode .modal-content {
-      background-color: #1f1f1f;
-      color: #fff;
+
+    .navbar {
+      background-color: #ffffff;
     }
+
+    .dark-mode .navbar {
+      background-color: #1f1f1f;
+    }
+
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+      color: #000;
+    }
+
+    .dark-mode .navbar .nav-link,
+    .dark-mode .navbar .navbar-brand {
+      color: #ffffff;
+    }
+
     .nav-link:hover {
       text-decoration: underline;
     }
+
+    .hero {
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      padding: 4rem 2rem;
+    }
+
+    .dark-mode .hero {
+      background: linear-gradient(to right, #1e1e1e, #121212);
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .modal-body ul {
+      list-style: square;
+      margin-left: 1.5rem;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+    }
+
+    .dark-mode footer {
+      background-color: #2c2c2c;
+      color: #ccc;
+    }
+
     @media (max-width: 768px) {
       .hero {
         text-align: center;
       }
     }
+
+    .theme-toggle-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 0;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <nav class="navbar navbar-expand-lg px-3">
       <a class="navbar-brand" href="#home">Portfolio</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -45,7 +110,11 @@
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item"><button onclick="toggleTheme()" class="btn btn-outline-dark ms-2">Toggle Theme</button></li>
+          <li class="nav-item">
+            <button onclick="toggleTheme()" class="btn btn-outline-dark ms-2 theme-toggle-btn" id="themeToggleBtn">
+              <i class="bi bi-brightness-high" id="themeIcon"></i>
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
@@ -53,41 +122,60 @@
 
   <main>
     <section id="home" class="hero py-5 text-center">
-      <h1>Welcome to My Portfolio</h1>
-      <p class="lead">Frontend Developer </p>
+      <h1>Welcome to My world</h1>
+      <p class="lead">Hi, I'm Bharathi Palyam a Front-End Developer </p>
     </section>
 
     <section id="about" class="py-5 container">
       <h2>About Me</h2>
-      <p>I am a passionate frontend developer with experience in building responsive and interactive web applications.</p>
+      <p>I am a passionate frontend developer with experience in building responsive and interactive web applications.
+        I Specialize in turing design ideas into fully functional web interfaces using technologies like:
+        <br>
+        * HTML, CSS, JavaScript
+        <br>
+        * React.js & bootstrap
+        <br>
+        * Responsive Design & cross-browser compatibility
+        <br>
+
+        With a strong eye for detail and a commitment to clean, efficient code, I love creating smooth and interactive
+        web experiences that enhance user engagement.
+
+
+      </p>
     </section>
 
     <section id="projects" class="py-5 container">
-    <h2>Projects</h2>
-    <div class="row">
-    <div class="col-md-4">
-    <div class="card">
-    <div class="card-body">
-    <h5 class="card-title">Project 1</h5>
-    <p class="card-text">Short description of project 1.</p>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project1Modal">More Info</button>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-4">
-    <div class="card">
-    <div class="card-body">
-    <h5 class="card-title">Project 2</h5>
-    <p class="card-text">Short description of project 2.</p>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project2Modal">More Info</button>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
+      <h2>Projects</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Project 3</h5>
-              <p class="card-text">Short description of project 3.</p>
+              <h5 class="card-title">🔷 1. Personal Portfolio <br>Website</h5>
+
+              <p class="card-text">Responsive portfolio site with projects, skills, and theme toggle.</p>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project1Modal">More Info</button>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">🔷 2.Student Result Management System </h5>
+              <p class="card-text">Web app to manage student marks and auto-calculate grades.
+
+              </p>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project2Modal">More Info</button>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">🔷 3. Ticket Management<br> System</h5>
+              <p class="card-text">A web dashboard to manage, assign, and track support tickets in real-time.</p>
               <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project3Modal">More Info</button>
             </div>
           </div>
@@ -113,7 +201,8 @@
           <textarea class="form-control" id="message" rows="4" required></textarea>
           <div class="invalid-feedback">Message is required.</div>
         </div>
-        <button type="submit" class="btn btn-success">Send</button>
+        <!-- <button type="submit" class="btn btn-success">Send</button> -->
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#project1Modal">Send</button>
       </form>
     </section>
   </main>
@@ -123,14 +212,169 @@
   </footer>
 
   <!-- Project Modals -->
-  <div class="modal fade" id="project1Modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Project 1</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Detailed information about Project 1.</div></div></div></div>
-  <div class="modal fade" id="project2Modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Project 2</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Detailed information about Project 2.</div></div></div></div>
-  <div class="modal fade" id="project3Modal" tabindex="-1"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Project 3</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Detailed information about Project 3.</div></div></div></div>
+  <div class="modal fade" id="project1Modal" tabindex="-1" aria-labelledby="project1ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="project1ModalLabel">🔷 1. Personal Portfolio Website</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <p><strong>✅ Project Name:</strong> Personal Portfolio Website</p>
+
+          <h6 class="mt-3"><strong>📝 Description:</strong></h6>
+          <p>
+            A responsive and interactive personal portfolio website built to showcase my profile, skills, and projects.
+            Includes smooth navigation, dark/light mode toggle, and a working contact form with validation.
+          </p>
+
+          <h6 class="mt-3"><strong>🧑‍💻 Responsibilities:</strong></h6>
+          <ul>
+            <li>Designed and developed the layout using HTML, CSS, and Bootstrap 5.</li>
+            <li>Implemented smooth scroll and responsive layout.</li>
+            <li>Added dark/light theme toggle functionality using JavaScript.</li>
+            <li>Built a contact form with client-side validation.</li>
+            <li>Ensured cross-browser compatibility and mobile responsiveness.</li>
+          </ul>
+
+          <h6 class="mt-3"><strong>⭐ Features:</strong></h6>
+          <ul>
+            <li>Responsive design for all devices</li>
+            <li>Dark/Light theme switcher</li>
+            <li>Smooth scrolling navigation</li>
+            <li>Validated contact form</li>
+            <li>Organized project section with modals</li>
+            <li>Clean and modern UI</li>
+          </ul>
+
+          <h6 class="mt-3"><strong>💻 Technologies Used:</strong></h6>
+          <p>
+            HTML5, CSS3, Bootstrap 5, JavaScript (ES6)
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="project2Modal" tabindex="-1" aria-labelledby="project2ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="project2ModalLabel">🔷 2. Student Result Management System</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <p><strong>🎓 Project Name:</strong> Student Result Management System</p>
+
+          <h6 class="mt-3"><strong>📝 Description:</strong></h6>
+          <p>
+            A web-based application designed to manage and display student academic results.
+            It allows users to add, edit, delete, and view student records with automatic grade calculation based on
+            marks.
+            The app is responsive and runs entirely in the browser using JavaScript and localStorage.
+          </p>
+
+          <h6 class="mt-3"><strong>🧑‍💻 Responsibilities:</strong></h6>
+          <ul>
+            <li>Built the full UI using HTML, CSS, and Bootstrap.</li>
+            <li>Created forms for entering student name and marks.</li>
+            <li>Wrote JavaScript functions to calculate grades dynamically.</li>
+            <li>Implemented localStorage to save data across sessions.</li>
+            <li>Ensured responsive design for mobile, tablet, and desktop.</li>
+            <li>Handled validation for required fields and input types.</li>
+          </ul>
+
+          <h6 class="mt-3"><strong>⭐ Features:</strong></h6>
+          <ul>
+            <li>Add, edit, and delete student results.</li>
+            <li>Auto-calculate percentage and grade.</li>
+            <li>Real-time result display.</li>
+            <li>Responsive and clean user interface.</li>
+            <li>Data persistence using localStorage.</li>
+            <li>Input validation and user feedback.</li>
+          </ul>
+
+          <h6 class="mt-3"><strong>💻 Technologies Used:</strong></h6>
+          <p>
+            HTML5, CSS3, Bootstrap 5, JavaScript (ES6), LocalStorage (Web Storage API)
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="project3Modal" tabindex="-1" aria-labelledby="project3ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="project3ModalLabel">🔷 3. Ticket Management System</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <p><strong>✅ Project Name:</strong> Ticket Management System</p>
+
+          <h6 class="mt-3"><strong>📝 Description:</strong></h6>
+          <p>
+            A responsive admin panel that allows users (like IT staff, customer support teams, or admins) to create,
+            view,
+            assign, and update support tickets. The system categorizes tickets by status (Open, In Progress, Resolved)
+            and priority.
+          </p>
+
+          <h6 class="mt-3"><strong>🧑‍💻 Responsibilities:</strong></h6>
+          <ul>
+            <li>Designed a clean, responsive UI using React.js and Bootstrap/Tailwind.</li>
+            <li>Created components for ticket cards, filters, and status indicators.</li>
+            <li>Implemented form validation and modal popups for creating/editing tickets.</li>
+            <li>Used <code>useState</code> and <code>useEffect</code> to manage dynamic ticket data.</li>
+            <li>Added filtering functionality by status and priority.</li>
+          </ul>
+
+          <h6 class="mt-3"><strong>⭐ Features:</strong></h6>
+          <ul>
+            <li>Create, edit, and delete support tickets.</li>
+            <li>Filter by status: Open, In Progress, Resolved.</li>
+            <li>Assign tickets to users or departments.</li>
+            <li>Real-time status updates.</li>
+            <li>Responsive dashboard layout with sidebar navigation.</li>
+            <li>Data storage using localStorage or Firebase (optional).</li>
+          </ul>
+
+          <h6 class="mt-3"><strong>💻 Technologies Used:</strong></h6>
+          <p>
+            React.js, Bootstrap 5 or Tailwind CSS, JavaScript, React Icons / Font Awesome, Netlify / GitHub Pages for
+            deployment
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
+      const body = document.body;
+      const themeIcon = document.getElementById('themeIcon');
+
+      body.classList.toggle('dark-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        themeIcon.classList.remove('bi-brightness-high');
+        themeIcon.classList.add('bi-moon-fill');
+      } else {
+        themeIcon.classList.remove('bi-moon-fill');
+        themeIcon.classList.add('bi-brightness-high');
+      }
     }
 
     // Smooth scroll
@@ -144,7 +388,7 @@
     });
 
     // Form validation
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
+    document.getElementById('contactForm')?.addEventListener('submit', function (e) {
       const form = e.target;
       if (!form.checkValidity()) {
         e.preventDefault();
@@ -153,4 +397,5 @@
     });
   </script>
 </body>
+
 </html>
